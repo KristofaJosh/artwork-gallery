@@ -1,3 +1,4 @@
+import { BackButton } from './components/back-button';
 import { Description } from './components/description';
 import RenderImage from '@/components/render-image';
 import { fetchData } from '@/lib/fetchData';
@@ -5,7 +6,6 @@ import { cn } from '@/utils/cn';
 import { createImageLink } from '@/utils/createImageLink';
 import { clsx } from 'clsx';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
-import Link from 'next/link';
 
 const ColorCard = ({
   color,
@@ -34,13 +34,10 @@ export default async function ImageInfo({ params }: { params: Params }) {
     `/artworks/${params.id}`,
   );
 
-
   return (
     <div className={'container m-auto p-6 pb-10'}>
       <div className={'mb-6'}>
-        <Link href={'/'} className={'rounded bg-gray-100 p-2'}>
-          Back
-        </Link>
+        <BackButton />
       </div>
       <div className={cn('flex flex-col gap-6', 'md:flex-row', 'grid gap-10')}>
         <div className={'h-96 w-full w-min min-w-[300px] border'}>

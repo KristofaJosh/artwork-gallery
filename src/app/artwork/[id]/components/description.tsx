@@ -11,7 +11,7 @@ export const Description = ({ description }: Pick<Artwork, 'description'>) => {
       <div
         aria-hidden={!show}
         id={'description'}
-        className={cn('flex hidden flex-col gap-2', show && 'block')}
+        className={cn('description flex hidden flex-col gap-2', show && 'block')}
         dangerouslySetInnerHTML={{
           __html: description || <p>No description for this image</p>,
         }}
