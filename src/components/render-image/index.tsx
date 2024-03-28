@@ -11,6 +11,7 @@ type RenderImageType = {
   blurDataURL?: string;
   className?: string;
   imgClassName?: string;
+  showFullImageOnHover?: boolean;
 };
 const RenderImage = ({
   size = 'list',
@@ -19,10 +20,11 @@ const RenderImage = ({
   blurDataURL,
   className,
   imgClassName,
+  showFullImageOnHover = false,
 }: RenderImageType) => {
   return (
     <div
-        data-testid="render-image"
+      data-testid="render-image"
       className={cn(
         'relative overflow-hidden',
         size === 'list' ? 'h-80 w-auto' : 'h-80 w-80',
@@ -36,7 +38,12 @@ const RenderImage = ({
         blurDataURL={blurDataURL}
         placeholder={blurDataURL ? 'blur' : 'empty'}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        className={cn(size === 'list' && 'object-cover', imgClassName)}
+        className={cn(
+          showFullImageOnHover &&
+            'transition hover:bg-none hover:object-contain',
+          ['list', 'gallery'].includes(size) && 'object-cover',
+          imgClassName,
+        )}
         style={{
           backgroundImage: `url(${fallbackImage.src})`,
           backgroundPosition: 'center',
