@@ -15,8 +15,8 @@ const ColorCard = ({
   showPercentage?: boolean;
 }) => {
   const composeColor = clsx(
-    `${color.h}deg ${color.s}% ${color.l}%`,
-    showPercentage && `/${color.percentage}`,
+    `${color?.h}deg ${color?.s}% ${color?.l}%`,
+    showPercentage && `/${color?.percentage}`,
   );
   return (
     <div
