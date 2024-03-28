@@ -1,9 +1,9 @@
 ### What we’re looking fo
 
--[x] Do you know how Next.js works, including the app directory and data fetching?  
--[x] Can you build a responsive design using Tailwind CSS that works across all screen resolutions?  
--[x] Can you work effectively with a JSON response from an API?  
--[x] Can you add interactivity to the client using React?
+- [x] Do you know how Next.js works, including the app directory and data fetching?  
+- [x] Can you build a responsive design using Tailwind CSS that works across all screen resolutions?  
+- [x] Can you work effectively with a JSON response from an API?  
+- [x] Can you add interactivity to the client using React?
 
 ### Requirements
 
