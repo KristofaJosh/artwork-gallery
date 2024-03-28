@@ -34,7 +34,6 @@ export default async function ImageInfo({ params }: { params: Params }) {
     `/artworks/${params.id}`,
   );
 
-  console.log(JSON.stringify(data.alt_image_ids, null, 2));
 
   return (
     <div className={'container m-auto p-6 pb-10'}>
@@ -73,6 +72,7 @@ export default async function ImageInfo({ params }: { params: Params }) {
             <div className={'flex gap-2'}>
               {data.alt_image_ids.map((image_id) => (
                 <RenderImage
+                  key={image_id}
                   showFullImageOnHover
                   className={'h-[200px] w-[200px] border'}
                   src={createImageLink({
