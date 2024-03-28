@@ -1,10 +1,22 @@
-export default function Home() {
+import Loading from '@/app/loading';
+import { GalleryView } from '@/components/gallery-view';
+import { ListView } from '@/components/list-view';
+import { Suspense } from 'react';
+
+export default function Home(props: {
+  searchParams: { view: string; page: string };
+}) {
+  const { searchParams } = props;
+
   return (
-    <main className="absolute flex h-full w-full flex-col items-center justify-center text-center">
-      <h1 className="mb-4 text-4xl">👋</h1>
-      <p className="w-80 text-balance text-neutral-600">
-        Hi there! Feel free to delete this and do your own thing - good luck!
-      </p>
-    </main>
+    <div className="h-[100%]">
+      <Suspense fallback={<Loading />}>
+        {searchParams?.view === 'gallery' ? (
+          <GalleryView page={searchParams?.page} />
+        ) : (
+          <ListView page={searchParams?.page} />
+        )}
+      </Suspense>
+    </div>
   );
 }

@@ -22,6 +22,7 @@ const RenderImage = ({
 }: RenderImageType) => {
   return (
     <div
+        data-testid="render-image"
       className={cn(
         'relative overflow-hidden',
         size === 'list' ? 'h-80 w-auto' : 'h-80 w-80',
