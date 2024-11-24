@@ -2,7 +2,7 @@
 
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
-import fallbackImage from './img.png';
+import { SyntheticEvent } from 'react';
 
 type RenderImageType = {
   src: string;
@@ -13,6 +13,16 @@ type RenderImageType = {
   imgClassName?: string;
   showFullImageOnHover?: boolean;
 };
+
+const handleFailedToLoad = (e: SyntheticEvent<HTMLImageElement>) => {
+  e.currentTarget.srcset = '';
+  e.currentTarget.sizes = '';
+  e.currentTarget.src = '/images/not-found.png';
+  e.currentTarget.className = cn(
+    `${e.currentTarget.className} hover:object-cover`,
+  );
+};
+
 const RenderImage = ({
   size = 'list',
   src,
@@ -44,12 +54,7 @@ const RenderImage = ({
           ['list', 'gallery'].includes(size) && 'object-cover',
           imgClassName,
         )}
-        style={{
-          backgroundImage: `url(${fallbackImage.src})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          textIndent: '-9999px', // hack to hide the broken image icon
-        }}
+        onError={handleFailedToLoad}
       />
     </div>
   );
